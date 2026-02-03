@@ -4,7 +4,7 @@ export async function POST(request: Request) {
     try {
         const body = await request.json()
         // Validation is loose to allow flexibility, but we expect these fields
-        const { company, name, phone, email, linkedin } = body
+        const { company, name, phone, email, linkedin, owner } = body
 
         const webhookUrl = 'https://n8n-study.gogroupgl.com/webhook/mar-de-leads-hub'
 
@@ -32,6 +32,7 @@ export async function POST(request: Request) {
                 "numero telefone": phone,
                 email,
                 linkedin,
+                "vendedor responsavel": owner,
                 fonte: 'CHINA-RPA'
             }),
         })
