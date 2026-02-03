@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model pessoas_apollo_b2b {
+  // Assuming a generic ID exists or mapping specifically. 
+  // Since we don't have the exact schema, we will map field names provided.
+  // We use @map to match existing table names.
+  
+  // contact_id is the primary key from Apollo data
+  contact_id        String   @id @map("contact_id")
+  
+  company_name      String?
+  company_id        String?
+  lead_name         String?
+  job_title         String?
+  seniority_level   String?
+  department        String?
+  email             String?
+  phone             String?
+  linkedin_url      String?
+  relevance_score   Int?
+  lead_source       String?
+  is_decision_maker Boolean?
+  enrichment_date   DateTime?
+  status            String?
+  notes             String?
+  
+
+  
+  createdAt         DateTime? @default(now())
+  updatedAt         DateTime? @updatedAt
+
+  @@map("pessoas_apollo_b2b")
+}
+
+model empresas_enriquecidas {
+  id              String   @id @default(uuid())
+  
+  company_name    String?
+  website         String?
+  linkedin_url    String?
+  industry        String?
+  num_employees   String?
+  phone           String?
+  city            String?
+  state           String?
+  country         String?
+  primary_domain  String?
+  street_address  String?
+  postal_code     String?
+  
+  origin          String?
+  description     String?
+  
+  createdAt       DateTime? @default(now())
+  updatedAt       DateTime? @updatedAt
+
+  @@map("empresas_enriquecidas")
+}
+
+model company_outreach_status {
+  id           String    @id @default(uuid())
+  company_key  String    @unique
+  contacted    Boolean   @default(false)
+  contacted_by String?
+  contacted_at DateTime?
+  updated_at   DateTime  @default(now()) @updatedAt
+
+  @@map("company_outreach_status")
+}
