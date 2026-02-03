@@ -123,7 +123,7 @@ export default function Dashboard() {
         return {
           ...c,
           contacts: sortedContacts,
-          owner: (idx < splitIndex ? 'VANESSA' : 'DEBORA') as 'VANESSA' | 'DEBORA'
+          owner: c.owner || (idx < splitIndex ? 'VANESSA' : 'DEBORAH')
         }
       })
 
