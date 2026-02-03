@@ -115,6 +115,7 @@ export async function GET() {
 
             return {
                 key: comp.key,
+                owner: owner,
                 name: enrich?.company_name || comp.name,
                 description: enrich?.description || 'Sem descrição disponível.',
                 website: enrich?.website || enrich?.primary_domain || comp.domainInput || null,
