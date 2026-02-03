@@ -307,7 +307,6 @@ function CompanyCard({ company, onToggle, onCopy }: { company: Company, onToggle
           name: contact.name,
           phone: contact.phone,
           email: contact.email,
-          email: contact.email,
           linkedin: contact.linkedin,
           owner: company.owner
         })
