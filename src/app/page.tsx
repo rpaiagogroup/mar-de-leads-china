@@ -28,7 +28,7 @@ type Company = {
   contacted_at: string | null
 
   // Dynamic Owner (assigned on frontend fetch)
-  owner?: 'VANESSA' | 'DEBORA'
+  owner?: 'VANESSA' | 'DEBORAH'
 
   contacts: Contact[]
 }
