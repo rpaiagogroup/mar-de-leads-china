@@ -99,8 +99,7 @@ export async function GET() {
         // 6. Assemble Final Response
         const result = allCompanies.map((comp, i) => {
             // Find Enrichment (Try matching domain first, then name)
-            const splitIndex = Math.ceil(allCompanies.length / 2)
-            const owner = i < splitIndex ? 'VANESSA' : 'DEBORAH'
+            const owner = 'VANESSA'
             const domainKey = extractDomain(comp.domainInput)
             const enrich = enrichedData.find(e => {
                 // Match domain
