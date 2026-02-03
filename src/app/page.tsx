@@ -86,7 +86,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true)
   const [userName, setUserName] = useState('')
   const [search, setSearch] = useState('')
-  const [activeOwner, setActiveOwner] = useState<'VANESSA' | 'DEBORA'>('VANESSA')
+  const [activeOwner, setActiveOwner] = useState<'VANESSA' | 'DEBORAH'>('VANESSA')
   const [statusFilter, setStatusFilter] = useState<'all' | 'pending' | 'contacted'>('all')
   const [seniorityFilter, setSeniorityFilter] = useState<string>('all')
 
@@ -244,18 +244,18 @@ export default function Dashboard() {
 
         {/* Tabs */}
         <div className="flex border-b border-slate-200 mb-8 gap-6">
-          <button
-            onClick={() => setActiveOwner('VANESSA')}
-            className={`pb-3 px-2 text-sm font-bold tracking-wide transition-all border-b-2 ${activeOwner === 'VANESSA' ? 'border-slate-800 text-slate-800' : 'border-transparent text-slate-400 hover:text-slate-600'}`}
-          >
-            VANESSA
-          </button>
-          <button
-            onClick={() => setActiveOwner('DEBORA')}
-            className={`pb-3 px-2 text-sm font-bold tracking-wide transition-all border-b-2 ${activeOwner === 'DEBORA' ? 'border-slate-800 text-slate-800' : 'border-transparent text-slate-400 hover:text-slate-600'}`}
-          >
-            DEBORA
-          </button>
+          {['VANESSA', 'DEBORAH'].map((owner) => (
+            <button
+              key={owner}
+              onClick={() => setActiveOwner(owner as 'VANESSA' | 'DEBORAH')}
+              className={`flex-1 py-4 text-sm font-bold uppercase tracking-widest transition-all relative ${activeOwner === owner ? 'text-blue-600 bg-blue-50/50' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
+            >
+              {owner}
+              {activeOwner === owner && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 shadow-[0_-2px_6px_rgba(37,99,235,0.2)]"></span>
+              )}
+            </button>
+          ))}
         </div>
 
         {/* Stats */}
